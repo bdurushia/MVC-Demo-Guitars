@@ -1,0 +1,41 @@
+﻿@model IEnumerable<Guitars>
+
+
+<div style="display: block">
+    <h2 style="display: inline-block">Guitars</h2>
+    <a style="display: inline-block" class="btn btn-outline-dark text-bg-dark" href="/Guitars/InsertGuitars/">Add a New Guitar</a>
+</div>
+
+<table class="table">
+    <tr>
+        <th>View</th>
+        <th>Brand</th>
+        <th>Model</th>
+        <th>Color</th>
+        <th>Price</th>
+        <th>Year</th>
+        <th>Condition</th>
+    </tr>
+
+    @foreach (var guitar in @Model)
+    {
+        <tr>
+            <td><a class="btn btn-outline-dark text-bg-dark" href="/Guitars/ViewGuitars/@guitar.Id">View Guitar</a></td>
+            <td>@guitar.Brand</td>
+            <td>@guitar.Model</td>
+            <td>@guitar.Color</td>
+            <td>$@guitar.Price</td>
+            <td>@guitar.Year</td>
+            @if (guitar.IsNew == false)
+            {
+                <td>Used</td>
+            }
+            else
+            {
+                <td>New</td>
+            }
+        </tr>    
+    }
+
+</table>
+

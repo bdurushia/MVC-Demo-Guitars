@@ -1,7 +1,20 @@
+using MVC_Demo_Guitars.Models.Data;
+using MySql.Data.MySqlClient;
+using System.Data;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddScoped<IDbConnection>((s) =>
+{
+    IDbConnection conn = new MySqlConnection(builder.Configuration.GetConnectionString("electric_guitars"));
+    conn.Open();
+    return conn;
+});
+
+builder.Services.AddTransient<IGuitarsRepository, GuitarsRepository>();
 
 var app = builder.Build();
 

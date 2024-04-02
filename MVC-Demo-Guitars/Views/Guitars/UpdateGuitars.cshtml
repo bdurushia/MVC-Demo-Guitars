@@ -1,0 +1,24 @@
+﻿@model Guitars
+
+<h2>Update @Model.Brand @Model.Model</h2>
+
+@using (Html.BeginForm("UpdateGuitarsToDatabase", "Guitars", "Post"))
+{
+    <input asp-for="Id" type="hidden" value="@Model.Id"/>
+
+    <label asp-for="Brand" class="control-label">Brand</label>
+    <input type="text" name="Brand" class="form-control" value="@Model.Brand"/>
+
+    <label asp-for="Model" class="control-label">Model</label>
+    <input type="text" name="Model" class="form-control" value="@Model.Model" />
+
+    <label asp-for="Price" class="control-label">Price</label>
+    <input type="number" step="0.01" name="Price" class="form-control" value="@Model.Price" />
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.IsNew, "In New Condition")
+        @Html.CheckBoxFor(model => model.IsNew, new { @class="form-check-input" })
+    </div>
+
+    <input type="submit" value="Update Guitar" class="btn btn-outline-dark"/>
+}

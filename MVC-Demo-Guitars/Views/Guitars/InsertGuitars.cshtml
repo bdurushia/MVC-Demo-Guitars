@@ -1,0 +1,30 @@
+﻿@model Guitars
+
+<h2>Add a New Guitar</h2>
+
+@using (Html.BeginForm("InsertGuitarsToDatabase", "Guitars", "Post"))
+{
+    <input asp-for="Id" type="hidden" value=""/>
+
+    <label asp-for="Brand" class="control-label">Brand</label>
+    <input type="text" name="Brand" class="form-control" value=""/>
+
+    <label asp-for="Model" class="control-label">Model</label>
+    <input type="text" name="Model" class="form-control" value="" />
+
+    <label asp-for="Color" class="control-label">Color</label>
+    <input type="text" name="Color" class="form-control" value="" />
+
+    <label asp-for="Price" class="control-label">Price</label>
+    <input type="number" name="Price" class="form-control" value="" />
+
+    <label asp-for="Year" class="control-label">Year</label>
+    <input type="number" name="Year" class="form-control" value="" />
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.IsNew, "In New Condition")
+        @Html.CheckBoxFor(model => model.IsNew, new { @class = "form-check-input" })
+    </div>
+
+    <input type="submit" value="Add Guitar" class="btn btn-outline-dark" />
+}

@@ -1,0 +1,35 @@
+﻿@model Guitars
+
+<h2>Guitar</h2>
+<table class="table">
+    <tr>
+        <th>ID</th>
+        <th>Brand</th>
+        <th>Model</th>
+        <th>Color</th>
+        <th>Price</th>
+        <th>Year</th>
+        <th>Condition</th>
+    </tr>
+    <tr>
+        <td>@Model.Id</td>
+        <td>@Model.Brand</td>
+        <td>@Model.Model</td>
+        <td>@Model.Color</td>
+        <td>$@Model.Price</td>
+        <td>@Model.Year</td>
+        @if (Model.IsNew == false)
+        {
+            <td>Used</td>
+        }
+        else
+        {
+            <td>New</td>
+        }
+    </tr>
+
+</table>
+
+<div style="display: block">
+    <a class="btn btn-outline-dark" href="/Guitars/UpdateGuitars/@Model.Id">Update</a>
+</div>
